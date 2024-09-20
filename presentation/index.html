@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Cloud Native Apps mit Spring Boot 3 und GraalVM</title><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport"><link href="reveal.js-3.9.2/css/reveal.css" rel="stylesheet"><link href="reveal.js-3.9.2/plugin/title-footer/title-footer.css" rel="stylesheet"><link rel="stylesheet" href="reveal.js-3.9.2/css/theme/anderscore.css" id="theme"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"><style>/* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
+pre.CodeRay{background:#f7f7f8}
+.CodeRay .line-numbers{border-right:1px solid currentColor;opacity:.35;padding:0 .5em 0 0}
+.CodeRay span.line-numbers{display:inline-block;margin-right:.75em}
+.CodeRay .line-numbers strong{color:#000}
+table.CodeRay{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.CodeRay td{vertical-align:top;line-height:inherit}
+table.CodeRay td.line-numbers{text-align:right}
+table.CodeRay td.code{padding:0 0 0 .75em}
+.CodeRay .debug{color:#fff !important;background:#000080 !important}
+.CodeRay .annotation{color:#007}
+.CodeRay .attribute-name{color:#000080}
+.CodeRay .attribute-value{color:#700}
+.CodeRay .binary{color:#509}
+.CodeRay .comment{color:#998;font-style:italic}
+.CodeRay .char{color:#04d}
+.CodeRay .char .content{color:#04d}
+.CodeRay .char .delimiter{color:#039}
+.CodeRay .class{color:#458;font-weight:bold}
+.CodeRay .complex{color:#a08}
+.CodeRay .constant,.CodeRay .predefined-constant{color:#008080}
+.CodeRay .color{color:#099}
+.CodeRay .class-variable{color:#369}
+.CodeRay .decorator{color:#b0b}
+.CodeRay .definition{color:#099}
+.CodeRay .delimiter{color:#000}
+.CodeRay .doc{color:#970}
+.CodeRay .doctype{color:#34b}
+.CodeRay .doc-string{color:#d42}
+.CodeRay .escape{color:#666}
+.CodeRay .entity{color:#800}
+.CodeRay .error{color:#808}
+.CodeRay .exception{color:inherit}
+.CodeRay .filename{color:#099}
+.CodeRay .function{color:#900;font-weight:bold}
+.CodeRay .global-variable{color:#008080}
+.CodeRay .hex{color:#058}
+.CodeRay .integer,.CodeRay .float{color:#099}
+.CodeRay .include{color:#555}
+.CodeRay .inline{color:#000}
+.CodeRay .inline .inline{background:#ccc}
+.CodeRay .inline .inline .inline{background:#bbb}
+.CodeRay .inline .inline-delimiter{color:#d14}
+.CodeRay .inline-delimiter{color:#d14}
+.CodeRay .important{color:#555;font-weight:bold}
+.CodeRay .interpreted{color:#b2b}
+.CodeRay .instance-variable{color:#008080}
+.CodeRay .label{color:#970}
+.CodeRay .local-variable{color:#963}
+.CodeRay .octal{color:#40e}
+.CodeRay .predefined{color:#369}
+.CodeRay .preprocessor{color:#579}
+.CodeRay .pseudo-class{color:#555}
+.CodeRay .directive{font-weight:bold}
+.CodeRay .type{font-weight:bold}
+.CodeRay .predefined-type{color:inherit}
+.CodeRay .reserved,.CodeRay .keyword {color:#000;font-weight:bold}
+.CodeRay .key{color:#808}
+.CodeRay .key .delimiter{color:#606}
+.CodeRay .key .char{color:#80f}
+.CodeRay .value{color:#088}
+.CodeRay .regexp .delimiter{color:#808}
+.CodeRay .regexp .content{color:#808}
+.CodeRay .regexp .modifier{color:#808}
+.CodeRay .regexp .char{color:#d14}
+.CodeRay .regexp .function{color:#404;font-weight:bold}
+.CodeRay .string{color:#d20}
+.CodeRay .string .string .string{background:#ffd0d0}
+.CodeRay .string .content{color:#d14}
+.CodeRay .string .char{color:#d14}
+.CodeRay .string .delimiter{color:#d14}
+.CodeRay .shell{color:#d14}
+.CodeRay .shell .delimiter{color:#d14}
+.CodeRay .symbol{color:#990073}
+.CodeRay .symbol .content{color:#a60}
+.CodeRay .symbol .delimiter{color:#630}
+.CodeRay .tag{color:#008080}
+.CodeRay .tag-special{color:#d70}
+.CodeRay .variable{color:#036}
+.CodeRay .insert{background:#afa}
+.CodeRay .delete{background:#faa}
+.CodeRay .change{color:#aaf;background:#007}
+.CodeRay .head{color:#f8f;background:#505}
+.CodeRay .insert .insert{color:#080}
+.CodeRay .delete .delete{color:#800}
+.CodeRay .change .change{color:#66f}
+.CodeRay .head .head{color:#f4f}</style><link href="reveal.js-3.9.2/lib/css/zenburn.css" rel="stylesheet"><script>document.write( '<link rel="stylesheet" href="reveal.js-3.9.2/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section id="_cloud_native_apps_mit_spring_boot_3_und_graalvm" class="center text-center"><h2>Cloud Native Apps mit Spring Boot 3 und GraalVM</h2><div class="paragraph margin-bottom-default"><p><span class="image"><img src="images/cover.png" alt="cover" height="200"></span></p></div>
+<div class="paragraph"><p><span class="image"><img src="images/anderscore/semicolon.svg" alt="semicolon" height="300"></span></p></div></section>
+<section id="_vorstellung" class="columns"><h2>Vorstellung</h2><div class="imageblock" style=""><img src="images/anderscore/dkraemer.jpg" alt="dkraemer" height="600"></div>
+<div class="openblock"><div class="content"><div class="paragraph heading"><p>Daniel Krämer</p></div>
+<div class="ulist"><ul><li><p>Senior Software Engineer &amp; Architect</p></li><li><p>Migration und Integration</p></li><li><p>DevOps</p></li><li><p>Testautomatisierung</p></li><li><p>Trainings, Vorträge, Artikel</p></li><li><p><span class="image"><img src="images/social/github.png" alt="github" width="30" height="30"></span> dkraemer-anderscore</p></li></ul></div></div></div></section>
+<section id="_unternehmen"><h2>Unternehmen</h2><div class="paragraph"><p>
+<head>
+<style>
+	span.r {
+		color:#225c4d;
+	}
+	ul.bullet li::before{
+  		content: "\25CF";
+  		color: #225c4d;
+  		display: inline-block;
+  		margin-right: 20px;
+	}
+	ul.checkmark li::before{
+  		content: "\2714";
+  		color: #225c4d;
+  		display: inline-block;
+  		margin-right: 11px;
+	}
+	ul.arrow li::before{
+  		content: "\2794";
+  		color: #225c4d;
+  		display: inline-block;
+  		margin-right: 11px;
+	}
+</style>
+</head>
+<body>
+<p>
+	<div style="position:relative; top:280px;">
+		Individuelle Anwendungsentwicklung - Java Enterprise, Web, Mobile
+		<ul class="bullet" style="list-style:none;">
+			<li>seit 2005 <span class="r">&#160;&#160;&#160;♦&#160;&#160;&#160;</span> in Köln <span class="r">&#160;&#160;&#160;♦&#160;&#160;&#160;</span> für alle Branchen <span class="r">&#160;&#160;&#160;♦&#160;&#160;&#160;</span> <img style="position:relative; top:17px" src="images/anderscore/goldschmiede.png" height="60"></li>
+			<li>nach Aufwand & zum Festpreis</li>
+		</ul>
+		<div class="fragment">
+			<ul class="checkmark" style="list-style:none;">
+				<li>Digitalisierung / Prozesse / Integration</li>
+				<li>Migration</li>
+				<li>Neuentwicklung</li>
+				<li>Notfall / kritische Situationen</li>
+			</ul><br>
+			<ul class="arrow" style="list-style:none;">
+				<li>pragmatisch, zielgerichtet, zuverlässig</li>
+			</ul>
+		</div>
+	</div>
+</p>
+<p class="fragment">
+	<img style="overflow:hidden; position:relative; bottom:30px; left:830px;" src="images/anderscore/Bereiche.png" height="600">
+</p>
+<p>
+	<div class="fragment">
+		<div style="position:relative; bottom:270px;">
+		Kompletter SW Life Cycle<br>
+			<ul class="bullet" style="list-style:none;">
+				<li>Projektmanagement / agile Methodik</li>
+				<li>Anforderungsanalyse</li>
+				<li>Architektur & SW-Design</li>
+				<li>Implementierung & Testautomation</li>
+				<li>Studien & Seminare</li>
+			</ul>
+		</div>
+		<div style="position:relative; left:850px; bottom:330px; color:#225c4d; font-weight:bold">
+			... und für Sie? Sprechen Sie uns an!
+		</div>
+	</div>
+</p>
+</body>
+</p></div></section>
+<section id="_graalvm"><h2>GraalVM</h2><div class="imageblock" style=""><img src="images/graalvm.svg" alt="graalvm" width="800"></div>
+<div class="ulist"><ul><li><p>Alternative zu OpenJDK/HotSpot</p></li><li><p>Truffle Framework: Unterstützung anderer Sprachen über AST</p></li><li><p><strong>Native Image</strong>: Erweiterung für <strong>ahead-of-time (AOT) Compilation</strong></p></li><li><p>Graal Compiler, SubstrateVM</p></li><li><p>Community Edition vs. Enterprise Edition</p></li><li><p>Alternativen: Mandrel (Red Hat), Liberica NIK (Bellsoft)</p></li></ul></div></section>
+<section id="_graalvm_2"><h2>GraalVM</h2><div class="imageblock" style=""><img src="images/graalvm_architecture.jpg" alt="graalvm architecture" height="800"></div></section>
+<section id="_graalvm_3"><h2>GraalVM</h2><div class="paragraph heading"><p>Vorteile</p></div>
+<div class="ulist"><ul><li><p>Reduzierte Startup Time</p></li><li><p>Geringerer Speicherverbrauch</p></li><li><p>Potentiell kleinere Angriffsfläche (Closed World)</p></li><li><p>Polyglotte Anwendungen</p></li></ul></div></section>
+<section id="_graalvm_4"><h2>GraalVM</h2><div class="paragraph heading"><p>Eingeschränkt bzw. nicht unterstützt</p></div>
+<div class="ulist"><ul><li><p>Reflection (@RegisterForReflection)</p></li><li><p>Dynamic Class Loading (z.B. JRebel)</p></li><li><p>Manipulationen des Bytecodes (z.B. Lombok, Profiler, Agents)</p></li><li><p>Java Debugger (nur GDB)</p></li></ul></div></section>
+<section id="_spring_boot_3"><h2>Spring Boot 3</h2><div class="paragraph heading"><p>Vorgeschichte</p></div>
+<div class="ulist"><ul><li><p>Micronaut (2018)</p></li><li><p>GraalVM (2019)</p></li><li><p>Quarkus (2019)</p></li><li><p>Spring Native (2019)</p></li><li><p>Java 17 (2021)</p></li><li><p>Vollständige Integration in Spring 6 und Spring Boot 3 (2022)</p></li><li><p>Spring Native deprecated (2023)</p></li></ul></div></section>
+<section id="_spring_boot_3_2"><h2>Spring Boot 3</h2><div class="paragraph heading"><p>Verwendung</p></div>
+<div class="paragraph"><p>Native Image Build (GraalVM):</p></div>
+<pre class="CodeRay listingblock"><code class="bash language-bash">mvn -Pnative native:compile</code></pre>
+<div class="paragraph"><p>Native Container Build (Buildpacks):</p></div>
+<pre class="CodeRay listingblock"><code class="bash language-bash">mvn -Pnative spring-boot:build-image</code></pre></section>
+<section id="_spring_boot_3_3"><h2>Spring Boot 3</h2><div class="paragraph heading"><p>Unter der Haube</p></div>
+<div class="ulist"><ul><li><p>Statische Analyse des Classpaths</p></li><li><p>Starten des ApplicationContexts (ohne Instanziierung)</p></li><li><p>Generierung und Auswertung von Metadaten</p><div class="ulist"><ul><li><p>GraalVM Reachability Repository</p></li><li><p>Runtime Hints (Spring, Libraries, eigener Code)</p></li></ul></div></li><li><p>Generierung von zusätzlichem AOT <strong>Source</strong> Code</p></li><li><p>Entfernen nicht erreichbarer Klassen und Ressourcen</p></li><li><p>Kompilierung eines nativen Binaries</p></li><li><p>Bauen eines Docker Images (Buildpacks, optional)</p></li></ul></div></section>
+<section id="_spring_boot_3_4"><h2>Spring Boot 3</h2><div class="imageblock" style=""><img src="images/spring-boot-native.png" alt="spring boot native" height="750"></div>
+<div class="paragraph center"><p>(c) Sébastien Deleuze, VMware Tanzu</p></div></section>
+<section id="_spring_boot_3_5"><h2>Spring Boot 3</h2><div class="imageblock" style=""><img src="images/aot-architecture.png" alt="aot architecture" height="750"></div>
+<div class="paragraph center"><p>(c) Sébastien Deleuze, VMware Tanzu</p></div></section>
+<section id="_live_demo" class="text-center"><h2>Live Demo</h2><div class="paragraph heading"><p>Zeit für eine Live Demo!</p></div></section>
+<section id="_spring_boot_3_6"><h2>Spring Boot 3</h2><div class="paragraph heading"><p>Testing</p></div>
+<div class="ulist"><ul><li><p>Unit und Integration Tests auf JVM</p></li><li><p>Bauen und Starten der Anwendung im AOT Mode:</p></li></ul></div>
+<pre class="CodeRay listingblock"><code class="bash language-bash">mvn -Pnative clean package
+java -Dspring.aot.enabled=true -jar target/app.jar</code></pre></section>
+<section id="_spring_boot_3_7"><h2>Spring Boot 3</h2><div class="paragraph heading"><p>Native Tests</p></div>
+<div class="ulist"><ul><li><p>Verwendung der GraalVM Native Build Tools</p></li><li><p>Analyse der eingebundenen ApplicationContexte</p></li><li><p>Generierung von zusätzlichem AOT (Test) <strong>Source</strong> Code</p></li><li><p>Generierung und Ausführung eines Images <strong>inkl.</strong> sämtlicher Tests</p></li></ul></div>
+<pre class="CodeRay listingblock"><code class="bash language-bash">mvn -PnativeTest test</code></pre></section>
+<section id="_spring_boot_3_8"><h2>Spring Boot 3</h2><div class="paragraph heading"><p>Limitierungen</p></div>
+<div class="ulist"><ul><li><p>Closed World</p><div class="ulist"><ul><li><p>Classpath</p></li><li><p>ApplicationContext</p></li><li><p>Profile &amp; Conditions</p></li></ul></div></li><li><p>Reflection</p></li><li><p>Resource Loading</p></li><li><p>Dynamic (Lazy) Class Loading</p></li><li><p>Generierung von Bytecode (Runtime)</p></li><li><p>Java Agents</p></li></ul></div></section>
+<section id="_spring_boot_3_9"><h2>Spring Boot 3</h2><div class="paragraph heading"><p>Nativer Migrationspfad</p></div>
+<div class="ulist"><ul><li><p>Java und Dependencies aktualisieren</p></li><li><p>Anwendung im AOT Mode bauen und auf JVM starten</p></li><li><p>Anwendung und Tests nativ ausführen</p></li><li><p>Runtime Hints ergänzen</p><div class="ulist"><ul><li><p>Reflection</p></li><li><p>Ressourcen</p></li><li><p>Serialisierung</p></li><li><p>DynamicProxys</p></li><li><p>JNI</p></li></ul></div></li></ul></div></section>
+<section id="_benchmarks_build_time"><h2>Benchmarks - Build Time</h2><div class="paragraph"><p><strong>Spring Boot (native)</strong></p></div>
+<div class="imageblock" style=""><img src="images/springboot3_native_build.png" alt="springboot3 native build" height="300"></div>
+<div class="paragraph"><p><strong>Quarkus (native)</strong></p></div>
+<div class="imageblock" style=""><img src="images/quarkus_native_build.png" alt="quarkus native build" height="300"></div></section>
+<section id="_benchmarks_startup_time"><h2>Benchmarks - Startup Time</h2><div class="paragraph"><p><strong>Spring Boot (JVM)</strong></p></div>
+<div class="imageblock" style=""><img src="images/springboot3_jvm_startup.png" alt="springboot3 jvm startup" height="50"></div>
+<div class="paragraph"><p><strong>Spring Boot (native)</strong></p></div>
+<div class="imageblock" style=""><img src="images/springboot3_native_startup.png" alt="springboot3 native startup" height="50"></div>
+<div class="paragraph"><p><strong>Quarkus (native)</strong></p></div>
+<div class="imageblock" style=""><img src="images/quarkus_native_startup.png" alt="quarkus native startup" height="50"></div></section>
+<section id="_benchmarks_ressourcenverbrauch"><h2>Benchmarks - Ressourcenverbrauch</h2><div class="paragraph"><p><strong>Spring Boot (JVM)</strong></p></div>
+<div class="imageblock" style=""><img src="images/springboot3_jvm_resources.png" alt="springboot3 jvm resources" height="80"></div>
+<div class="paragraph"><p><strong>Spring Boot (native)</strong></p></div>
+<div class="imageblock" style=""><img src="images/springboot3_native_resources.png" alt="springboot3 native resources" height="80"></div>
+<div class="paragraph"><p><strong>Quarkus (native)</strong></p></div>
+<div class="imageblock" style=""><img src="images/quarkus_native_resources.png" alt="quarkus native resources" height="80"></div></section>
+<section id="_einordnung"><h2>Einordnung</h2><div class="paragraph heading"><p>Geeignet</p></div>
+<div class="ulist"><ul><li><p>Eingeschränkte oder "teure" Ressourcen</p></li><li><p>Hohe Anzahl von Instanzen</p></li><li><p>Häufige Startups</p></li><li><p>Serverless / FaaS</p></li><li><p>Microservices, Container, Kubernetes</p></li></ul></div></section>
+<section id="_einordnung_2"><h2>Einordnung</h2><div class="paragraph heading"><p>Weniger geeignet</p></div>
+<div class="ulist"><ul><li><p>Häufige Builds</p></li><li><p>Intensive Verwendung von Profilen und Conditions</p></li><li><p>Nutzung problematischer Dependencies</p></li><li><p>Optimierung auf maximalen Durchsatz</p></li><li><p>Portierbarkeit jenseits von Containern</p></li><li><p>Monolithen</p></li><li><p>Legacy Software</p></li></ul></div></section>
+<section id="_links" class="columns text-center"><h2>Links</h2><div class="openblock"><div class="content"><div class="ulist"><ul><li><p><a href="https://www.graalvm.org/native-image" class="bare">https://www.graalvm.org/native-image</a></p></li><li><p><a href="https://www.graalvm.org/native-image/libraries-and-frameworks" class="bare">https://www.graalvm.org/native-image/libraries-and-frameworks</a></p></li><li><p><a href="https://github.com/oracle/graalvm-reachability-metadata/blob/master/library-and-framework-list.json" class="bare">https://github.com/oracle/graalvm-reachability-metadata/blob/master/library-and-framework-list.json</a></p></li><li><p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html" class="bare">https://docs.spring.io/spring-boot/docs/current/reference/html/native-image.html</a></p></li><li><p><a href="https://www.youtube.com/watch?v=TS4DpYSmfXk" class="bare">https://www.youtube.com/watch?v=TS4DpYSmfXk</a></p></li><li><p>Folien + Demo: <a href="https://github.com/anderscore-gmbh/semicolon-2409" class="bare">https://github.com/anderscore-gmbh/semicolon-2409</a></p></li></ul></div></div></div></section>
+<section id="_fragen" class="columns text-center"><h2>Fragen?</h2><div class="openblock"><div class="content"><div class="paragraph"><p><span class="image"><img src="images/questions.jpg" alt="questions" width="750" height="750"></span></p></div></div></div>
+<div class="openblock social-media"><div class="content"><div class="paragraph"><p><span class="image"><img src="images/social/twitter.png" alt="twitter" height="30"></span>
+@anderScoreGmbH
+<span class="image"><img src="images/social/facebook.png" alt="facebook" height="30"></span>
+anderScore.company
+<span class="image"><img src="images/social/meetup.svg" alt="meetup" height="30"></span>
+Java_Meetup_anderscore</p></div></div></div></section></div></div><script src="reveal.js-3.9.2/lib/js/head.min.js"></script><script src="reveal.js-3.9.2/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: true,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: true,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'anderscore',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
+
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 1728,
+  height: 972,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: 'reveal.js-3.9.2/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'reveal.js-3.9.2/plugin/title-footer/title-footer.js', async: true, callback: function()
+          {title_footer.initialize('Cloud Native Apps mit Spring Boot 3 und GraalVM', 'Daniel Krämer', 'anderScore GmbH • Frankenwerft 35 • 50667 Köln');}},
+      { src: 'reveal.js-3.9.2/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js-3.9.2/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      
+      { src: 'reveal.js-3.9.2/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'reveal.js-3.9.2/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script></body></html>

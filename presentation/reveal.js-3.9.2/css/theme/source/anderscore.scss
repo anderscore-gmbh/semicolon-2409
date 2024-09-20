@@ -1,0 +1,275 @@
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(../../lib/font/source-sans-pro/source-sans-pro.css);
+
+$backgroundColor: white;
+
+$mainColor: black;
+$headingColor: black;
+
+$mainFontSize: 2.5em;
+$mainFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingFont: 'Source Sans Pro', Helvetica, sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingFontWeight: 600;
+$linkColor: #225c4d;
+$linkColorHover: lighten($linkColor, 25%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+
+$contentHeight: 894px;
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+.reveal .controls {
+  bottom: 55px;
+}
+
+.reveal section {
+    height: $contentHeight;
+    margin: 25px 0 0 0;
+}
+
+.reveal .future {
+  width: 100%;
+}
+
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+.yellow {
+    background-color:yellow;
+}
+.blue {
+    background-color: blue;
+}
+
+.lead{
+    @extend h2;
+}
+
+.reveal .slide-number {
+  background-color: transparent;
+  font-family: $mainFont;
+  font-size: 2vh;
+  display: inherit;
+  padding: 0 10px;
+  bottom: 0;
+  line-height: inherit;
+  right: 0;
+  position: relative;
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+.reveal controls {
+font-size: 1.2vh;
+}
+
+.no-title-footer {
+  &, h1, h2, h3 {
+    text-align: center;
+  }
+}
+
+
+section.has-light-background {
+  &, h1, h2, h3, h4, h5, h6 {
+    color: #222;
+  }
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+// These settings must appear after the import...
+
+// Show images and UML diagrams without border
+.reveal section img {
+  border: 0;
+  box-shadow: none;
+  margin: 0px;
+}
+
+.reveal img, .reveal video, .reveal iframe {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.imageblock {
+    text-align:center;
+}
+
+.reveal section {
+  code {
+  // Increase max-height of code samples (default is 400px)
+
+    max-height: 934px;
+  }
+  pre {
+    font-size: 0.7em;
+    width: 100%;
+  }
+
+  p {
+    margin: 10px 0;
+  }
+}
+
+// Use italic for the filename of a listing
+.reveal .listingblock .title {
+  font-style: italic;
+}
+
+// Center the attribution of a quote
+.reveal .attribution {
+  text-align: center;
+}
+
+// Heading not creating new sub-slide, use by [.heading]
+.reveal .heading {
+  font-size: $heading2Size;
+
+  margin: $headingMargin;
+  color: $headingColor;
+
+  font-family: $headingFont;
+  font-weight: $headingFontWeight;
+  line-height: $headingLineHeight;
+  letter-spacing: $headingLetterSpacing;
+
+  text-transform: $headingTextTransform;
+  text-shadow: $headingTextShadow;
+
+  word-wrap: break-word;
+}
+
+// Create dense tables without to much line space
+.reveal .tableblock p {
+  margin: 0;
+}
+
+.ulist.small{
+     font-size: 0.6em;
+     line-height: 1.2em;
+}
+
+.reveal section {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+ }
+
+.reveal section.columns {
+    display:flex !important;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content:center;
+}
+
+.reveal section.columns.top {
+    align-content:flex-start;
+}
+
+.reveal section.columns.align-items-top{
+    align-items: flex-start;
+}
+
+.reveal section.columns.align-items-bottom{
+    align-items: flex-end;
+}
+
+.reveal section.columns.bottom{
+    align-content:flex-end;
+}
+
+.reveal section.columns.space-evenly{
+    align-content:space-around;
+}
+
+.reveal section.columns>div.top {
+    align-self:flex-start;
+}
+.reveal section.columns>div.bottom {
+    align-self:flex-end;
+}
+
+.reveal section.columns > div {
+    flex-grow:1;
+}
+
+.reveal section > .one-col {
+    flex-basis:100%
+}
+.reveal section > .two-col {
+   flex-basis:50%;
+}
+.reveal section > .three-col {
+   flex-basis:100/3%;
+}
+.reveal section > .four-col {
+   flex-basis:100/4%;
+}
+.reveal section > .five-col {
+   flex-basis:100/5%;
+}
+
+.reveal section.center {
+  align-items: center;
+}
+.reveal section>div.center {
+    align-self: center;
+}
+
+.reveal section.right {
+    align-items: flow-end;
+}
+
+.reveal section>div.right {
+    align-self: flow-end;
+}
+
+.reveal section.top {
+    justify-content: flex-start
+}
+.reveal section.bottom {
+    justify-content: flex-start
+}
+.reveal section.space-evenly {
+    justify-content: flex-start
+}
+.reveal .text-center {
+  text-align: center;
+}
+.reveal .text-right {
+  text-align: right;
+}
+
+// Specific
+
+.reveal .teacherBox {
+    width: 100%;
+    margin: 20px 0px;
+    padding: 10px;
+    background-color: #DAEFE8;
+}
+
+.reveal .teacherBox .content {
+    width: 100%;
+}

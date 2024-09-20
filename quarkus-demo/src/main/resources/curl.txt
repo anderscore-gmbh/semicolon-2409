@@ -1,0 +1,3 @@
+curl -X POST -H 'Content-Type: application/json' -d '{"title": "Ein Task", "priority": "HIGH", "done": false}' http://localhost:8182/api/v1/tasks
+curl http://localhost:8182/api/v1/tasks
+curl http://localhost:8182/api/v1/tasks/1
